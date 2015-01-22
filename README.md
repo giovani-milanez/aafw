@@ -1,7 +1,6 @@
-# aafw
 Attribute Authority Framework: 
 
-This project is the result of my final paper and its aimed to be used by attribute authrorities that needs 
+This project is the result of my final paper and its aimed to be used by attribute authorities that needs 
 to manage the life cycle of their attribute certificates.
 
 [Final Paper (Portuguese)] (https://projetos.inf.ufsc.br/arquivos_projetos/projeto_1540/TCC_Framework_Certificado_Atributo_Giovani_Milanez_v2.pdf)
@@ -21,58 +20,10 @@ was used to build a prototype application for cinema ticket management.
 
 ## Examples
 The most basic AA application uses the already provided framework interfaces implementation.
-In order to use the framwork one must inherit <i>AttributeAuthority</i> class and implement its abstracts methods.
+In order to use the framework one must inherit <i>AttributeAuthority</i> class and implement its abstracts methods.
 
 The following application will respond through RPC or TCP protocol, as defined in the paper, to attribute certificate requests, for the attribute of OID 2.30.50.1.1.1.
 
 The <i>AllowValidadtor</i> is linked to the attribute, so whenever a request for that attribute is received the
 validator will trigger. The validator must tell if the holder present in the request has the privileges to obtain such attribute. 
 The <i>AllowValidator</i> is implemented so that no validation is done, always granting the holder the attribute requested.
-
-```c++
-#include "aafw/AttributeAuthority.hpp"
-#include "aafw/DefaultFactory.hpp"
-#include "aafw/AllowValidator.hpp"
-#include "aafw/FileSystemCRLPublisher.hpp"
-
-#include <iostream>
-
-using namespace aafw;
-using namespace cryptobase;
-
-class MyAA : public AttributeAuthority
-{
-public:
-	std::unique_ptr<SystemFactory> getSystemFactory()
-	{
-		return std::unique_ptr<SystemFactory>(new DefaultFactory);
-	}
-	void setup()
-	{
-		registerValidator("2.30.50.1.1.1", new AllowValidator);
-		registerCRLPublisher("2.30.50.1.1.1", new FileSystemCRLPublisher(60, "http://myaa.com/aa.crl", "C:\\aa.crl"));
-		denyUnknownAttributes();
-	}
-};
-
-int main(int argc, char ** argv)
-{
-	try
-	{
-		MyAA aa;
-		return aa.run(argc, argv);
-	}
-	catch(...)
-	{
-		std::cerr << "something bad happened" << std::endl;
-	}
-}
-```
-
-## Dependencies
-
-[POCO C++ Libraries] (http://pocoproject.org/)
-
-[Apache Thrift] (http://thrift.apache.org/)
-
-[cryptobase] (https://github.com/giovani-milanez/cryptobase)
