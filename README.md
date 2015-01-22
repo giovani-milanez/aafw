@@ -68,3 +68,11 @@ int main(int argc, char ** argv)
 	}
 }
 ```
+
+## Dependencies
+
+[POCO C++ Libraries] (http://pocoproject.org/)
+
+[Apache Thrift] (http://thrift.apache.org/)
+
+[cryptobase] (https://github.com/giovani-milanez/cryptobase)
