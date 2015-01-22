@@ -23,7 +23,8 @@ was used to build a prototype application for cinema ticket management.
 The most basic AA application uses the already provided framework interfaces implementation.
 In order to use the framwork one must inherit <i>AttributeAuthority</i> class and implement its abstracts methods.
 
-The following application will respond to attribute certificate requests, for the attribute of OID 2.30.50.1.1.1.
+The following application will respond through RPC or TCP protocol, as defined in the paper, to attribute certificate requests, for the attribute of OID 2.30.50.1.1.1.
+
 The <i>AllowValidadtor</i> is linked to the attribute, so whenever a request for that attribute is received the
 validator will trigger. The validator must tell if the holder present in the request has the privileges to obtain such attribute. 
 The <i>AllowValidator</i> is implemented so that no validation is done, always granting the holder the attribute requested.
