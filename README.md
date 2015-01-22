@@ -1,5 +1,5 @@
 # aafw
-Attribute Authority Framework
+Attribute Authority Framework: 
 
 This project is the result of my final paper and its aimed to be used by attribute authrorities that needs 
 to manage the life cycle of their attribute certificates.
