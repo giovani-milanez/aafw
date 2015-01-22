@@ -27,3 +27,51 @@ The following application will respond through RPC or TCP protocol, as defined i
 The <i>AllowValidadtor</i> is linked to the attribute, so whenever a request for that attribute is received the
 validator will trigger. The validator must tell if the holder present in the request has the privileges to obtain such attribute. 
 The <i>AllowValidator</i> is implemented so that no validation is done, always granting the holder the attribute requested.
+
+```c++
+#include "aafw/AttributeAuthority.hpp"
+#include "aafw/DefaultFactory.hpp"
+#include "aafw/AllowValidator.hpp"
+#include "aafw/FileSystemCRLPublisher.hpp"
+
+#include <iostream>
+
+using namespace aafw;
+using namespace cryptobase;
+
+class MyAA : public AttributeAuthority
+{
+public:
+	std::unique_ptr<SystemFactory> getSystemFactory()
+	{
+		return std::unique_ptr<SystemFactory>(new DefaultFactory);
+	}
+	void setup()
+	{
+		registerValidator("2.30.50.1.1.1", new AllowValidator);
+		registerCRLPublisher("2.30.50.1.1.1", new FileSystemCRLPublisher(60, "http://myaa.com/aa.crl", "C:\\aa.crl"));
+		denyUnknownAttributes();
+	}
+};
+
+int main(int argc, char ** argv)
+{
+	try
+	{
+		MyAA aa;
+		return aa.run(argc, argv);
+	}
+	catch(...)
+	{
+		std::cerr << "something bad happened" << std::endl;
+	}
+}
+```
+
+## Dependencies
+
+[POCO C++ Libraries] (http://pocoproject.org/)
+
+[Apache Thrift] (http://thrift.apache.org/)
+
+[cryptobase] (https://github.com/giovani-milanez/cryptobase)
