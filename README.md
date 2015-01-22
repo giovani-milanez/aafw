@@ -39,7 +39,7 @@ The <i>AllowValidator</i> is implemented so that no validation is done, always g
 using namespace aafw;
 using namespace cryptobase;
 
-class MinhaEEA : public AttributeAuthority
+class MyAA : public AttributeAuthority
 {
 public:
 	std::unique_ptr<SystemFactory> getSystemFactory()
@@ -49,7 +49,7 @@ public:
 	void setup()
 	{
 		registerValidator("2.30.50.1.1.1", new AllowValidator);
-		registerCRLPublisher("2.30.50.1.1.1", new FileSystemCRLPublisher(60, "http://minhaEEA.com/eea.crl", "C:\\eea.crl"));
+		registerCRLPublisher("2.30.50.1.1.1", new FileSystemCRLPublisher(60, "http://myaa.com/aa.crl", "C:\\aa.crl"));
 		denyUnknownAttributes();
 	}
 };
@@ -58,8 +58,8 @@ int main(int argc, char ** argv)
 {
 	try
 	{
-		MinhaEEA eea;
-		return eea.run(argc, argv);
+		MyAA aa;
+		return aa.run(argc, argv);
 	}
 	catch(...)
 	{
