@@ -1,7 +1,8 @@
 # aafw
 Attribute Authority Framework
 
-This project is the result of my final paper.
+This project is the result of my final paper and its aimed to be used by attribute authrorities that need 
+to manage the life cycle of their attribute certificates.
 
 The X.509 attribute certificate is a digitally signed document that establish
 assignments to a entity. In July 2012, the technology was standardized
