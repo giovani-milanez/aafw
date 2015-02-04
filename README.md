@@ -18,6 +18,18 @@ was used to build a prototype application for cinema ticket management.
 </p>
 </i>
 
+## Use Case
+
+The frameworks goal is to respond to attribute certificate issuance, search and revocation requests, as shown in the use case diagram.
+
+![Use Case](use_case_aafw.png?raw=true)
+
+The life cycle of a attribute certificate starts with a issuance request from a thirty party. The request is processed and the holder's situation will be verified in order to aprove the issuance. After that the AC will be issued. The publication using either a <i>push</i> or <i>pull</i> method is needed so that it can be consumed. Once publish the holder can benefit from it until it expires. 
+While the AC is in its validity it can be revoked, causing the holder's privillege to be cancelled.
+Also, the AC verifier may query the Attribute Authority to check if the entity trying to access the protected resource has the rights to do so (has an AC expliciting it).
+The life cycle ends when the AC validity expires.
+
+
 ## Examples
 The most basic AA application uses the already provided framework interfaces implementation.
 In order to use the framework one must inherit <i>AttributeAuthority</i> class and implement its abstracts methods.
