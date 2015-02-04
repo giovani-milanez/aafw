@@ -1,4 +1,4 @@
-Attribute Authority Framework: 
+# Attribute Authority Framework
 
 This project is the result of my final paper and its aimed to be used by attribute authorities that needs 
 to manage the life cycle of their attribute certificates.
@@ -31,12 +31,21 @@ The life cycle ends when the AC validity expires.
 
 ## Class Diagram
 
-The simplified diagram class show a scenario where the framework user create a subclass of <i>AttributeAuthority</i> called <i><MinhaEEA</i> (MyAA in english), the green rectangle.
+The simplified diagram class show a scenario where the framework user create a subclass of <i>AttributeAuthority</i> called <i>MinhaEEA</i> (MyAA in english), the green rectangle.
 The framework interfaces are represented by the blue rectangles.
 The orange rectangles represent some of the interfaces implementation provided by the framework.
 Implementing the framework interfaces is the way to change its behaviour.
 
 ![Classes](classes_aafw.png?raw=true)
+
+The behaviours that can be changed are:
+- How to load the digital certificate, private key and algorithm to perform the AC signature
+- How to store and search in a repository the issued attribute certificates
+- How to obtain the next serial number of the AC to be issued
+- How to receive and send <i>AttributeCertificateReq</i> and <i>AttributeCertificateResp</i> messages
+- How and where to publish revoked AC
+- How to validate if the attributes present in a issuance request are acceptable for the requested holder
+- How to handle the <i>templateId</i> field present in a request
 
 ## Examples
 The most basic AA application uses the already provided framework interfaces implementation.
