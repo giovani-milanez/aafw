@@ -39,13 +39,13 @@ Implementing the framework interfaces is the way to change its behaviour.
 ![Classes](classes_aafw.png?raw=true)
 
 The behaviours that can be changed are:
-- How to load the digital certificate, private key and algorithm to perform the AC signature
-- How to store and search in a repository the issued attribute certificates
-- How to obtain the next serial number of the AC to be issued
-- How to receive and send <i>AttributeCertificateReq</i> and <i>AttributeCertificateResp</i> messages
-- How and where to publish revoked AC
-- How to validate if the attributes present in a issuance request are acceptable for the requested holder
-- How to handle the <i>templateId</i> field present in a request
+- How to load the digital certificate, private key and algorithm to perform the AC signature (<i>KeyLoader</i> interface)
+- How to store and search in a repository the issued attribute certificates (<i>ACStore</i> interface)
+- How to obtain the next serial number of the AC to be issued (<i>ACSerialLoader</i> interface)
+- How to receive and send <i>AttributeCertificateReq</i> and <i>AttributeCertificateResp</i> messages (<i>TransportServer</i> interface)
+- How and where to publish revoked AC (<i>CRLPublisher</i> interface)
+- How to validate if the attributes present in a issuance request are acceptable for the requested holder (<i>AttributeValidator</i> interface)
+- How to handle the <i>templateId</i> field present in a request (<i>ACTemplate</i> interface)
 
 ## Examples
 The most basic AA application uses the already provided framework interfaces implementation.
