@@ -18,7 +18,7 @@ was used to build a prototype application for cinema ticket management.
 </p>
 </i>
 
-## Use Case
+## Use Case Diagram
 
 The frameworks goal is to respond to attribute certificate issuance, search and revocation requests, as shown in the use case diagram.
 
@@ -29,6 +29,14 @@ While the AC is in its validity it can be revoked, causing the holder's priville
 Also, the AC verifier may query the Attribute Authority to check if the entity trying to access the protected resource has the rights to do so (has an AC expliciting it).
 The life cycle ends when the AC validity expires.
 
+## Class Diagram
+
+The simplified diagram class show a scenario where the framework user create a subclass of <i>AttributeAuthority</i> called <i><MinhaEEA</i> (MyAA in english), the green rectangle.
+The framework interfaces are represented by the blue rectangles.
+The orange rectangles represent some of the interfaces implementation provided by the framework.
+Implementing the framework interfaces is the way to change its behaviour.
+
+![Classes](classes_aafw.png?raw=true)
 
 ## Examples
 The most basic AA application uses the already provided framework interfaces implementation.
