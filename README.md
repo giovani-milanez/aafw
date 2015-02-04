@@ -24,9 +24,10 @@ The frameworks goal is to respond to attribute certificate issuance, search and 
 
 ![Use Case](use_case_aafw.png?raw=true)
 
-The life cycle of a attribute certificate starts with a issuance request from a thirty party. The request is processed and the holder's situation will be verified in order to aprove the issuance. After that the AC will be issued. The publication using either a <i>push</i> or <i>pull</i> method is needed so that it can be consumed. Once publish the holder can benefit from it until it expires. 
-While the AC is in its validity it can be revoked, causing the holder's privillege to be cancelled.
-Also, the AC verifier may query the Attribute Authority to check if the entity trying to access the protected resource has the rights to do so (has an AC expliciting it).
+The life cycle of a attribute certificate starts with a issuance request from a thirty party. The request is processed and the holder's situation will be verified in order to approve the issuance. 
+After that the AC will be issued. The publication using either a push or pull method is needed so that it can be consumed. 
+Once publish the holder can benefit from it until it expires. While the AC is in its validity it can be revoked, causing the holder's privilege to be cancelled. 
+Also, the AC verifier may query the Attribute Authority to check if the entity trying to access the protected resource has the rights to do so (has an AC expliciting it). 
 The life cycle ends when the AC validity expires.
 
 ## Class Diagram
@@ -34,11 +35,11 @@ The life cycle ends when the AC validity expires.
 The simplified diagram class show a scenario where the framework user create a subclass of <i>AttributeAuthority</i> called <i>MinhaEEA</i> (MyAA in english), the green rectangle.
 The framework interfaces are represented by the blue rectangles.
 The orange rectangles represent some of the interfaces implementation provided by the framework.
-Implementing the framework interfaces is the way to change its behaviour.
+Implementing the framework interfaces is the way to change its behavior.
 
 ![Classes](classes_aafw.png?raw=true)
 
-The behaviours that can be changed are:
+The behaviors that can be changed are:
 - How to load the digital certificate, private key and algorithm to perform the AC signature (<i>KeyLoader</i> interface)
 - How to store and search in a repository the issued attribute certificates (<i>ACStore</i> interface)
 - How to obtain the next serial number of the AC to be issued (<i>ACSerialLoader</i> interface)
